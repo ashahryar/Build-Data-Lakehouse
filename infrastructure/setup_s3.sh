@@ -27,7 +27,7 @@ echo "Creating S3 bucket: $BUCKET_NAME"
 aws s3 mb "s3://${BUCKET_NAME}"
 
 echo "Creating zone prefixes..."
-aws s3api put-object --bucket "$BUCKET_NAME" --key raw/
+aws s3api put-object --bucket "$my-first-lakehouse-project" --key raw/
 aws s3api put-object --bucket "$BUCKET_NAME" --key curated/
 aws s3api put-object --bucket "$BUCKET_NAME" --key consumption/
 

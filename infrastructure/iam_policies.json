@@ -1,0 +1,51 @@
+{
+  "_comment": "IAM policies used in this project. Replace my-first-lakehouse-project with your actual bucket name before applying.",
+
+  "GlueLakehouseRole_inline_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ],
+        "Resource": "arn:aws:s3:::my-first-lakehouse-project/*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListBucket",
+        "Resource": "arn:aws:s3:::my-first-lakehouse-project"
+      }
+    ]
+  },
+
+  "RedshiftS3ReadRole_inline_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ],
+        "Resource": [
+          "arn:aws:s3:::my-first-lakehouse-project",
+          "arn:aws:s3:::my-first-lakehouse-project/*"
+        ]
+      }
+    ]
+  },
+
+  "LambdaGlueTriggerRole_inline_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "glue:StartJobRun",
+        "Resource": "arn:aws:glue:*:*:job/*"
+      }
+    ]
+  }
+}
